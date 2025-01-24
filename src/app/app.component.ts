@@ -5,7 +5,7 @@ import { ListheroComponent } from './components/listhero/listhero.component';
 
 @Component({
   selector: 'app-root',
-  imports: [RouterOutlet,NavbarComponent,ListheroComponent],
+  imports: [RouterOutlet,NavbarComponent],
   templateUrl: './app.component.html',
   styleUrl: './app.component.scss'
 })

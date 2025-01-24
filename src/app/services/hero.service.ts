@@ -11,7 +11,7 @@ export class HeroService {
     { id: 2, nom: 'Batman', score: 90, enRepos: false },
     { id: 3, nom: 'Wonder Woman', score: 92, enRepos: true },
   ]);
-
+  private currentId: number = 3; 
   heroes$: Observable<hero[]> = this.heroes.asObservable();
 
   getHeroes(): hero[] {
@@ -65,6 +65,8 @@ export class HeroService {
    * @param newHero Nouveau héros à ajouter
    */
   addHero(newHero: hero): void {
+    this.currentId += 1;
+    newHero.id = this.currentId;
     const heroes = this.heroes.getValue();
     heroes.push(newHero);
     this.heroes.next(heroes);

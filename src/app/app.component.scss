@@ -1,0 +1,27 @@
+
+/* app.component.css */
+
+/* Flexbox layout for main content and navbar */
+.container-fluid {
+    display: flex;
+    height: 100vh;
+  }
+  
+  .main-content {
+    margin-left: 250px; /* Space for the vertical navbar */
+    padding: 20px;
+    width: calc(100% - 250px); /* Ensure the content doesn't overlap the navbar */
+  }
+  .footer {
+    background-color: #343a40; /* Couleur de fond (Bootstrap dark) */
+    color: white;
+    text-align: center;
+    padding: 10px 0;
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+  }
+  
+body {
+    margin-bottom: 60px; /* Adjust this value based on the height of your footer */
+  }

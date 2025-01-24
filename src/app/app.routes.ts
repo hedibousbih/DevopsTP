@@ -4,11 +4,14 @@ import { ListheroComponent } from './components/listhero/listhero.component';
 import { HeroinfoComponent } from './components/heroinfo/heroinfo.component';
 import { FormComponent } from './components/form/form.component';
 import { ErrorComponent } from './components/error/error.component';
+import { AcceuilComponent } from './components/acceuil/acceuil.component';
+
 
 export const routes: Routes = [
-    { path: 'home', component: ListheroComponent },
+    { path: 'home', component: AcceuilComponent },
+    { path: 'heroes', component: ListheroComponent },
     { path: 'hero/:id', component: HeroinfoComponent },
-    { path: 'add-hero', component: FormComponent },
+    { path: 'addhero', component: FormComponent },
     { path: '', redirectTo: '/home', pathMatch: 'full' },
     { path: '**', component: ErrorComponent },
 ];
