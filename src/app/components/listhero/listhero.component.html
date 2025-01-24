@@ -10,14 +10,13 @@
     </tr>
   </thead>
   <tbody>
-    <tr *ngFor='let hero of heroes' >
-      <td>{{ hero.id }}</td>
+    <tr *ngFor="let hero of heroes; trackBy: hero.nom">
       <td>{{ hero.nom }}</td>
       <td>{{ hero.score }}</td>
       <td>{{ hero.enRepos ? 'Repos' : 'Actif' }}</td>
-      <td>
-        <button (click)="goToHeroDetails(hero.id)">Détails</button>
+      <td> 
         <button (click)="deleteHero(hero.id)">Supprimer</button>
+        <button (click)="goToHeroDetails(hero.id)">info hero</button>
       </td>
     </tr>
   </tbody>

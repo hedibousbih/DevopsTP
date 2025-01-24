@@ -1,0 +1,9 @@
+@if ( hero ){
+<div >
+    <h1>Détails du Héros : {{ hero.nom }}</h1>
+    <p>ID : {{ hero.id }}</p>
+    <p>Score : {{ hero.score }}</p>
+    <p>Status : {{ hero.enRepos ? 'En repos' : 'Actif' }}</p>
+    <button (click)="vote(1)">+1 Point</button>
+    <button (click)="vote(-1)">-1 Point</button>
+  </div>}

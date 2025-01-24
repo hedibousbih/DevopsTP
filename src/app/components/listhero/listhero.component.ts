@@ -1,34 +1,36 @@
-import { Component } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
+import { Component, OnInit } from '@angular/core';
 import { HeroService } from '../../services/hero.service';
-import { hero } from '../../model/hero/hero'; 
-import { CommonModule } from '@angular/common';
+import { hero } from '../../model/hero/hero';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-listhero',
-  imports: [CommonModule],
   templateUrl: './listhero.component.html',
-  styleUrl: './listhero.component.scss'
+  styleUrls: ['./listhero.component.scss'],
 })
-export class ListheroComponent {
-  heroes: hero[] | undefined; // Déclaration d'un tableau pour stocker les héros
-  constructor(
-    private heroService: HeroService
+export class ListheroComponent implements OnInit {
+  heroes: hero[] = [];
 
-  ) {}
+  constructor(private heroService: HeroService, private router: Router) {}
 
   ngOnInit(): void {
-    this.heroes = this.heroService.getHeroes();
-    console.log(this.heroes) // Récupérez les héros depuis le service
+    // Subscribe to heroes$ to get the latest list whenever it updates
+    this.heroService.heroes$.subscribe((heroes) => {
+      this.heroes = heroes;
+    });
   }
 
   deleteHero(heroId: number): void {
-    this.heroService.deleteHero(heroId); // Supprimez un héros via le service
-    this.heroes = this.heroService.getHeroes(); // Mettez à jour la liste des héros
+    console.log('Attempting to delete hero with ID:', heroId); // Debugging
+    this.heroService.deleteHero(heroId);
+  
+    // Refresh the page
+    this.router.navigateByUrl('/', { skipLocationChange: true }).then(() => {
+      this.router.navigate(['']); // Replace '/listHero' with your actual route
+    });
   }
 
   goToHeroDetails(heroId: number): void {
-    //this.router.navigate(['/infoHero', heroId]); // Naviguez vers la page de détails du héros
+    this.router.navigate(['infoHero/', heroId]); // Navigates to the hero details route
   }
-
 }
