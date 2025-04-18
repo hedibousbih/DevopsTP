@@ -1,0 +1,52 @@
+name: CI Angular + Docker Compose
+
+on:
+  push:
+    branches:
+      - main  # ou master selon ta branche
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: 🔄 Checkout code
+        uses: actions/checkout@v3
+
+      - name: ⚙️ Setup Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: 18
+
+      - name: 📦 Install dependencies
+        run: npm install
+
+      - name: 🛠️ Build Angular (dev mode)
+        run: npm run build
+
+      - name: 🐳 Build Docker Compose
+        run: docker-compose build
+
+      - name: ▶️ Lancer l'app avec Docker Compose
+        run: docker-compose up -d
+
+      - name: ⏱️ Pause (attente lancement)
+        run: sleep 10
+
+      - name: ✅ Vérifier que l’app répond
+        run: |
+          curl --fail http://localhost:8080 || (echo "L'application ne répond pas !" && exit 1)
+
+      - name: 🧹 Stop Docker Compose
+        run: docker-compose down
+
+      - name: 🚀 Simuler un déploiement
+        run: echo "Déploiement simulé (docker push + run...)"
+
+      - name: 🏷️ (Optionnel) Tag version
+        if: success()
+        run: |
+          git config user.name "github-actions"
+          git config user.email "github-actions@github.com"
+          git tag v1.0.${{ github.run_number }}
+          git push origin v1.0.${{ github.run_number }}
