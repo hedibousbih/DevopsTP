@@ -1,26 +1,25 @@
 
 FROM node:18
 
-# Set working directory
 WORKDIR /app
 
-# Install dependencies
+# installer les dépendances de l'application Angular
 COPY package*.json ./
 RUN npm install
 
-# Copy app source code
+# Copier les fichiers de l'application Angular dans le conteneur
 COPY . .
 
 # Build the Angular app (default build, not production)
 RUN npm run build
 
-# Install serve globally
+# installer le serveur de production
 RUN npm install -g serve
 
-# Move to the build output directory
+
 WORKDIR /app/dist/tp-note-prog-web
 
-# Expose port and start server
+# exposer le port 8080 pour le serveur de production
 EXPOSE 8080
 CMD ["serve", "-s", ".", "-l", "8080"]
 

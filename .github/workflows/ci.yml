@@ -3,7 +3,7 @@ name: CI Angular + Docker Compose
 on:
   push:
     branches:
-      - main  # ou master selon ta branche
+      - main  
 
 jobs:
   build:
