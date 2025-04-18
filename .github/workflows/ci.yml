@@ -24,11 +24,8 @@ jobs:
       - name: 🛠️ Build Angular (dev mode)
         run: npm run build
 
-      - name: 🐳 Build Docker Compose
-        run: docker-compose build
-
       - name: ▶️ Lancer l'app avec Docker Compose
-        run: docker-compose up -d
+        run: docker-compose up --build
 
       - name: ⏱️ Pause (attente lancement)
         run: sleep 10
