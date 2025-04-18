@@ -42,4 +42,3 @@ jobs:
 
       - name: 🚀 Simuler un déploiement
         run: echo "Déploiement simulé (docker push + run...)"
-}
