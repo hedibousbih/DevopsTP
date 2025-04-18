@@ -24,8 +24,11 @@ jobs:
       - name: 🛠️ Build Angular (dev mode)
         run: npm run build
 
+      - name: 🐳 Build Docker Compose
+        run: docker compose build
+
       - name: ▶️ Lancer l'app avec Docker Compose
-        run: docker-compose up --build
+        run: docker compose up -d
 
       - name: ⏱️ Pause (attente lancement)
         run: sleep 10
@@ -35,7 +38,7 @@ jobs:
           curl --fail http://localhost:8080 || (echo "L'application ne répond pas !" && exit 1)
 
       - name: 🧹 Stop Docker Compose
-        run: docker-compose down
+        run: docker compose down
 
       - name: 🚀 Simuler un déploiement
         run: echo "Déploiement simulé (docker push + run...)"
