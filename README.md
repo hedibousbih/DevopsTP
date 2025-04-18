@@ -1,59 +1,76 @@
-# TpNoteProgWeb
+# 🛠️ Projet DevOps – Application Angular
 
-This project was generated using [Angular CLI](https://github.com/angular/angular-cli) version 19.1.4.
+![CI](https://github.com/<ton-user>/<ton-repo>/actions/workflows/ci.yml/badge.svg)
 
-## Development server
+## 📦 Description
 
-To start a local development server, run:
+Ce projet est une application Angular conteneurisée avec Docker et orchestrée via Docker Compose.
 
-```bash
-ng serve
-```
+Il met en œuvre une chaîne DevOps complète avec :
 
-Once the server is running, open your browser and navigate to `http://localhost:4200/`. The application will automatically reload whenever you modify any of the source files.
+- 🐳 Docker  
+- 🔁 GitHub Actions pour l’intégration continue (CI)  
+- 🧩 Docker Compose pour l’orchestration locale  
+- 🏷️ Gestion automatique de tags Git
 
-## Code scaffolding
+---
 
-Angular CLI includes powerful code scaffolding tools. To generate a new component, run:
+## 🚀 Lancement de l'application
 
-```bash
-ng generate component component-name
-```
+### 1. Prérequis
 
-For a complete list of available schematics (such as `components`, `directives`, or `pipes`), run:
+- Docker  
+- Docker Compose  
+- Git  
+- Node.js (si vous souhaitez lancer l'app sans Docker)
 
-```bash
-ng generate --help
-```
+---
 
-## Building
-
-To build the project run:
+### 2. Cloner le projet
 
 ```bash
-ng build
-```
-
-This will compile your project and store the build artifacts in the `dist/` directory. By default, the production build optimizes your application for performance and speed.
-
-## Running unit tests
-
-To execute unit tests with the [Karma](https://karma-runner.github.io) test runner, use the following command:
-
+git clone https://github.com/hedibousbih/DevopsTP.git
+cd DevopsTP
+``` 
+### 3. Lancer l’application avec Docker Compose
 ```bash
-ng test
+docker compose up --build
 ```
+L'application Angular sera accessible sur :
+➡️ http://localhost:8080
 
-## Running end-to-end tests
+## 🔄 Intégration Continue (CI)
+À chaque push sur la branche main :
 
-For end-to-end (e2e) testing, run:
+- 📦 L’application est installée (npm install) et buildée (ng build)
 
+- 🐳 Une image Docker est construite
+
+- ▶️ L’application est lancée avec Docker Compose
+
+- ✅ Une vérification est faite avec curl
+
+- 🧹 Les conteneurs sont stoppés automatiquement
+
+- 🚀 Un tag Git est généré automatiquement (
+
+- 📤 Une simulation de déploiement est affichée 
+
+## Comment faire fonctionner ✅ 
 ```bash
-ng e2e
+docker compose up
+
 ```
+il sera disponible a partir du naviguateur sur http://localhost:8080 
 
-Angular CLI does not come with an end-to-end testing framework by default. You can choose one that suits your needs.
+## 📂 Structure du projet
+angular-devops-tp/
+├── src/                   → Code source Angular
+├── dist/                  → Fichiers générés après build
+├── Dockerfile             → Image Docker de l'app
+├── docker-compose.yml     → Orchestration multi-conteneurs
+├── .github/workflows/     → Workflows GitHub Actions (CI/CD)
+├── README.md              → Ce fichier
 
-## Additional Resources
-
-For more information on using the Angular CLI, including detailed command references, visit the [Angular CLI Overview and Command Reference](https://angular.dev/tools/cli) page.
+## 👨‍💻 Auteur
+### Mohamed Hedi Bousbih
