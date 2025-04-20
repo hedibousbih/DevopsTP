@@ -1,6 +1,5 @@
 # 🛠️ Projet DevOps – Application Angular
 
-![CI](https://github.com/<ton-user>/<ton-repo>/actions/workflows/ci.yml/badge.svg)
 
 ## 📦 Description
 
